@@ -1,0 +1,42 @@
+@import "../assets/scss/utils";
+
+.block-presentation {
+   background-color: $bg-color1;
+   h2 {
+      padding-top: 4vh;
+      padding-bottom: 4vh;
+      text-transform: uppercase;
+      font-size: 2rem;
+      text-align: center;
+   }
+
+   .presentation {
+      font-size: 1.5rem;
+      padding: 3rem 6rem;
+      display: flex;
+      align-items: center;
+   }
+   @include for-tablet() {
+      h2 {
+         padding-bottom: 2vh;
+      }
+      img {
+         width: 35vw;
+      }
+      .presentation {
+         padding: 3rem 1rem;
+      }
+   }
+   @include for-phone() {
+      .presentation {
+         flex-direction: column;
+         gap: 2rem;
+         margin-left: auto;
+         margin-right: auto;
+         text-align: center;
+      }
+      img {
+         width: 100%;
+      }
+   }
+}

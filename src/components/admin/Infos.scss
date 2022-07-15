@@ -1,0 +1,81 @@
+@import "../../assets/scss/utils";
+
+.admin-infos {
+   width: 90vw;
+   height: 78vh;
+   overflow-y: auto;
+
+   .error {
+      color: red;
+   }
+   .form-infos {
+      margin: 0 auto;
+      width: 90%;
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1rem;
+      grid-template-areas:
+         "pageTitle pageSubtitle"
+         "presTitle presImage"
+         "presContent presContent"
+         "city postal"
+         "adresse tel"
+         ". submit";
+
+      label {
+         display: flex;
+         flex-direction: column;
+         gap: 1rem;
+         text-transform: uppercase;
+         justify-content: center;
+
+         &.pageTitle {
+            grid-area: pageTitle;
+         }
+         &.pageSubtitle {
+            grid-area: pageSubtitle;
+         }
+         &.presTitle {
+            grid-area: presTitle;
+         }
+         &.presImage {
+            grid-area: presImage;
+         }
+         &.presContent {
+            grid-area: presContent;
+         }
+         &.city {
+            grid-area: city;
+         }
+         &.postal {
+            grid-area: postal;
+         }
+         &.adresse {
+            grid-area: adresse;
+         }
+         &.tel {
+            grid-area: tel;
+         }
+      }
+
+      input {
+         height: 3rem;
+      }
+      .image-pres {
+         display: flex;
+         gap: 2rem;
+         align-items: center;
+         img {
+            height: 5rem;
+            width: 10vw;
+         }
+      }
+
+      textarea {
+         height: 10rem;
+      }
+      .submit {
+         grid-area: submit;
+      }
+   }
+}

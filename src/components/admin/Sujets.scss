@@ -1,0 +1,63 @@
+@import "../../assets/scss/utils";
+
+.form-sujet {
+   display: inline-block;
+   // background-color: $bg-color2;
+   width: 90vw;
+
+   table {
+      margin: 0 auto;
+      width: 90%;
+   }
+
+   thead {
+      text-transform: uppercase;
+      text-align: center;
+      font-size: 1.5rem;
+
+      th:nth-child(1) {
+         width: 75%;
+      }
+   }
+
+   .sujet {
+      width: 100%;
+      font-size: 1.25rem;
+      margin-top: 0.5rem;
+      margin-bottom: 0.5rem;
+      padding-top: 0.25rem;
+      padding-bottom: 0.25rem;
+      background-color: $bg-color2;
+      border: none;
+   }
+   .sujet:disabled {
+      color: white;
+      background-color: $bg-color3;
+   }
+
+   .icone-sujet {
+      text-align: center;
+   }
+
+   svg {
+      pointer-events: none;
+   }
+
+   button {
+      background: none;
+      border: none;
+      color: white;
+   }
+
+   .add {
+      margin-top: 6rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      .add-sujet {
+         font-size: 6rem;
+         border: 2px solid white;
+         border-radius: 50%;
+      }
+   }
+}

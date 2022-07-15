@@ -1,0 +1,25 @@
+@import "../assets/scss/utils";
+
+footer.footer {
+   background-color: $bg-color2;
+   @include for-phone() {
+      margin-bottom: 65px;
+   }
+
+   ul {
+      text-align: center;
+      padding-bottom: 1%;
+      li {
+         display: inline;
+         margin-left: 3px;
+         a {
+            text-decoration: none;
+            color: black;
+         }
+         a::after {
+            content: "|";
+            margin-left: 3px;
+         }
+      }
+   }
+}

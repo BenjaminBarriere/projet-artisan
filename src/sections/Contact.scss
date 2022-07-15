@@ -1,0 +1,13 @@
+@import "../assets/scss/utils";
+
+.contact {
+   padding-bottom: 2rem;
+   background-color: $bg-color2;
+   h2 {
+      padding-top: 4vh;
+      padding-bottom: 4vh;
+      text-transform: uppercase;
+      font-size: 2rem;
+      text-align: center;
+   }
+}

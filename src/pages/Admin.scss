@@ -1,0 +1,13 @@
+@import "../assets/scss/utils";
+
+.admin {
+   background-color: $bg-color3;
+   height: 100vh;
+   color: white;
+
+   .page-admin {
+      display: flex;
+      width: 100vw;
+      // border-top: 2px solid white;
+   }
+}

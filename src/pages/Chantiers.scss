@@ -1,0 +1,52 @@
+@import "../assets/scss/utils";
+
+.page-chantiers {
+   background-color: $bg-color3;
+   height: 100vh;
+   color: white;
+   display: grid;
+   grid-template-columns: 1fr;
+   grid-template-rows: 10vh 90vh;
+   grid-template-areas: "menu" "chantiers";
+
+   @include for-phone() {
+      grid-template-rows: 90vh 10vh;
+      grid-template-areas: "chantiers" "menu";
+   }
+
+   header {
+      width: 90vw;
+      grid-area: menu;
+      display: grid;
+      grid-template-columns: 20vw 80vw;
+      justify-content: center;
+      align-items: center;
+
+      h1 {
+         font-size: 3rem;
+         text-transform: uppercase;
+         text-align: center;
+         width: 80vw;
+         @include for-phone() {
+            font-size: 1.5rem;
+         }
+      }
+
+      button {
+         width: 10vw;
+         height: 5vh;
+         transform: translate(15vh, 0);
+
+         @include for-phone() {
+            width: 20vw;
+            transform: translate(5vh, 0);
+         }
+      }
+   }
+   main {
+      width: 90vw;
+      margin: 0 auto;
+      overflow-y: auto;
+      grid-area: chantiers;
+   }
+}

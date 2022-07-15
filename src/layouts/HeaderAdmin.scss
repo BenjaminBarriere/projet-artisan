@@ -1,0 +1,12 @@
+@import "../assets/scss/utils";
+
+header.admin-header {
+   display: flex;
+   justify-content: center;
+   gap: 15vw;
+   padding: 3rem 0rem 6rem 0;
+
+   h1 {
+      font-size: 36px;
+   }
+}

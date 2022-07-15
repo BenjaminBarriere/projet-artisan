@@ -1,0 +1,44 @@
+@import "../assets/scss/utils";
+
+.block-chantiers {
+   background-color: $bg-color3;
+   color: white;
+
+   h2 {
+      padding-top: 4vh;
+      padding-bottom: 4vh;
+      text-transform: uppercase;
+      font-size: 2rem;
+      text-align: center;
+   }
+
+   .last-chantiers {
+      display: flex;
+      margin: 0 auto;
+      width: 80vw;
+      button {
+         margin-left: 1.5rem;
+         margin-right: 1.5rem;
+         background: transparent;
+         border: none;
+         font-size: 28px;
+         padding: 20px;
+         width: 25rem;
+      }
+
+      button:hover {
+         box-shadow: 0rem 0rem 0.1em 0.1em;
+      }
+   }
+
+   .button-chantiers {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding-bottom: 1rem;
+      button {
+         height: 3rem;
+      }
+   }
+}

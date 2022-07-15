@@ -1,0 +1,133 @@
+@import "../../assets/scss/utils";
+
+form.form-contact {
+   @include for-tablet() {
+      width: 80vw;
+   }
+
+   @include for-phone() {
+      // display: flex;
+      // flex-direction: column;
+      // align-items: center;
+      grid-template-columns: repeat(1, 1fr);
+      grid-template-areas:
+         "nom"
+         "mail"
+         "sujet"
+         "sujet-input"
+         "message"
+         "envoyer"
+         "tel"
+         "adr";
+   }
+
+   margin-top: 2rem;
+   margin-left: auto;
+   margin-right: auto;
+   width: 50vw;
+   display: grid;
+   grid-template-columns: repeat(2, 1fr);
+   grid-gap: 1rem;
+   grid-template-areas:
+      "nom mail"
+      "sujet sujet"
+      "sujet-input sujet-input"
+      "message message"
+      ". envoyer"
+      "tel adr";
+
+   .form-group {
+      display: flex;
+      flex-direction: column;
+
+      text-transform: uppercase;
+      font-weight: bold;
+
+      .error {
+         color: red;
+         padding-top: 1rem;
+         text-transform: none;
+      }
+
+      &.name {
+         grid-area: nom;
+      }
+
+      &.mail {
+         grid-area: mail;
+      }
+
+      &.sujet {
+         grid-area: sujet;
+      }
+
+      &.sujet-input {
+         grid-area: sujet-input;
+      }
+
+      &.message {
+         grid-area: message;
+
+         textarea {
+            height: 12rem;
+         }
+      }
+      .form-control {
+         border: none;
+         margin-top: 1rem;
+         height: 3rem;
+         width: 100%;
+         font-size: 1.5rem;
+      }
+   }
+
+   .hidden {
+      display: none;
+   }
+
+   .submit {
+      grid-area: envoyer;
+      margin-left: auto;
+      width: 8rem;
+      height: 2.5rem;
+   }
+
+   .tel {
+      grid-area: tel;
+      margin-left: auto;
+      margin-right: auto;
+      @include for-phone() {
+         margin-left: 17.5%;
+         margin-right: 17.5%;
+      }
+   }
+
+   .address {
+      grid-area: adr;
+      margin-left: auto;
+      margin-right: auto;
+
+      @include for-phone() {
+         margin-left: 17.5%;
+         margin-right: 17.5%;
+      }
+   }
+
+   svg {
+      margin-right: 1rem;
+      display: inline-block;
+      font-size: 2rem;
+   }
+
+   a {
+      text-decoration: none;
+      color: black;
+      font-weight: bold;
+   }
+
+   address {
+      color: black;
+      font-weight: bold;
+      display: inline-block;
+   }
+}
