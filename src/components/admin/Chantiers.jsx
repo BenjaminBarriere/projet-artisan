@@ -311,7 +311,10 @@ const Chantiers = () => {
 
    const addNewChantier = async (e) => {
       e.preventDefault()
-      let image = await resizeFile(e.target[4].files[0])
+      let image = ""
+      if (e.target[4].files[0] !== undefined) {
+         image = await resizeFile(e.target[4].files[0])
+      }
 
       let date = e.target[3].value
       date = date.substr(0, 4) + date.substr(5, 2) + date.substr(8, 2)

@@ -7,6 +7,7 @@ import { useDispatch } from "react-redux"
 import { editInfos } from "../../feature/infos.slice"
 import "./Infos.scss"
 import { useState } from "react"
+import Resizer from "react-image-file-resizer"
 const phoneRegExp = /^(?=.*\d)[\d ]+$/
 
 const schema = yup.object().shape({
@@ -50,28 +51,32 @@ const Infos = () => {
    }
    const token = localStorage.getItem("token")
 
-   const blobToBase64 = (blob) => {
-      const reader = new FileReader()
-      reader.readAsDataURL(blob)
-      return new Promise((resolve) => {
-         reader.onloadend = () => {
-            resolve(reader.result)
-         }
+   const resizeFile = (file) =>
+      new Promise((resolve) => {
+         Resizer.imageFileResizer(
+            file,
+            600,
+            600,
+            "PNG",
+            100,
+            0,
+            (uri) => {
+               resolve(uri)
+            },
+            "base64"
+         )
       })
-   }
 
    const onSubmit = async (data) => {
       let id = tmp_info._id
       data.modifImage = false
-      console.log()
       if (data.presentationImage.length !== 0) {
-         await blobToBase64(data.presentationImage[0]).then((res) => {
-            data.presentationImage = res
-            data.modifImage = true
-         })
+         data.presentationImage = await resizeFile(data.presentationImage[0])
+         data.modifImage = true
          console.log("salut")
       } else {
          data.presentationImage = tmp_info.presentationImage
+         console.log(data.presentationImage)
       }
 
       axios
@@ -81,6 +86,9 @@ const Infos = () => {
             },
          })
          .then((res) => {
+            data.presentationImage = res.data.img
+            srcImage = data.presentationImage.substr(1)
+
             dispatch(editInfos([data, id]))
 
             console.log(res.data.msg)
