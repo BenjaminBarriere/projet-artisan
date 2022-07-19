@@ -11,7 +11,7 @@ import "./Admin.scss"
 const Admin = () => {
    const tokenTmp = localStorage.getItem("token")
    const [token, setToken] = useState(tokenTmp)
-   const [pageValue, setPageValue] = useState("infos")
+   const [pageValue, setPageValue] = useState("salut")
 
    const login = (data) => {
       axios
@@ -40,6 +40,9 @@ const Admin = () => {
          ) : (
             <div className="page-admin">
                <NavMenu onClick={changePageValue} />
+               {pageValue === "salut" && (
+                  <p className="welcome"> Bienvenue dans le back office</p>
+               )}
                {pageValue === "infos" && <Infos />}
                {pageValue === "sujets" && <Sujets />}
                {pageValue === "chantiers" && <Chantiers />}

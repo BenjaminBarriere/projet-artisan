@@ -16,6 +16,7 @@ import {
    deleteChantiers,
    editChantiers,
 } from "../../feature/chantiers.slice"
+import Resizer from "react-image-file-resizer"
 
 library.add(faPen)
 library.add(faCheck)
@@ -238,23 +239,26 @@ const Chantiers = () => {
       setIdImage((idImage) => [...idImage, id])
    }
 
-   const blobToBase64 = (blob) => {
-      const reader = new FileReader()
-      reader.readAsDataURL(blob)
-      return new Promise((resolve) => {
-         reader.onloadend = () => {
-            resolve(reader.result)
-         }
+   const resizeFile = (file) =>
+      new Promise((resolve) => {
+         Resizer.imageFileResizer(
+            file,
+            600,
+            600,
+            "PNG",
+            100,
+            0,
+            (uri) => {
+               resolve(uri)
+            },
+            "base64"
+         )
       })
-   }
 
    const fileSelectedHandler = async (event, index) => {
       let chantier = chantiers[index]
       console.log(index)
-      let image = ""
-      await blobToBase64(event.target.files[0]).then((res) => {
-         image = res
-      })
+      let image = await resizeFile(event.target.files[0])
 
       console.log(image)
       let data = {
@@ -307,10 +311,7 @@ const Chantiers = () => {
 
    const addNewChantier = async (e) => {
       e.preventDefault()
-      let image = ""
-      await blobToBase64(e.target[4].files[0]).then((res) => {
-         image = res
-      })
+      let image = await resizeFile(e.target[4].files[0])
 
       let date = e.target[3].value
       date = date.substr(0, 4) + date.substr(5, 2) + date.substr(8, 2)

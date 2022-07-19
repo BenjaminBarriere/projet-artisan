@@ -94,7 +94,7 @@ const FormContact = () => {
       axios
          .post(`http://192.168.1.21:3005/api/v1/mail/`, data)
          .then((res) => {
-            console.log(res) // A TRANSFORMER EN MESSAGE DE VALIDATION !!
+            alert("Message envoyé")
          })
          .catch((error) => {
             console.log(error)
