@@ -51,11 +51,15 @@ const Sujets = () => {
          setIdSujet(array)
       } else {
          axios
-            .put(`http://192.168.1.21:3005/api/v1/sujets/${id}`, data, {
-               headers: {
-                  Authorization: `Bearer ${token}`,
-               },
-            })
+            .put(
+               `${process.env.REACT_APP_API_HOST}/api/v1/sujets/${id}`,
+               data,
+               {
+                  headers: {
+                     Authorization: `Bearer ${token}`,
+                  },
+               }
+            )
             .then((res) => {
                dispatch(editSujets([res.data.sujet, id]))
 
@@ -82,7 +86,7 @@ const Sujets = () => {
       let idSujet = idToDelete
 
       axios
-         .delete(`http://192.168.1.21:3005/api/v1/sujets/${idSujet}`, {
+         .delete(`${process.env.REACT_APP_API_HOST}/api/v1/sujets/${idSujet}`, {
             headers: {
                Authorization: `Bearer ${token}`,
             },
@@ -112,7 +116,7 @@ const Sujets = () => {
       }
 
       axios
-         .post(`http://192.168.1.21:3005/api/v1/sujets/`, data, {
+         .post(`${process.env.REACT_APP_API_HOST}/api/v1/sujets/`, data, {
             headers: {
                Authorization: `Bearer ${token}`,
             },

@@ -92,7 +92,7 @@ const FormContact = () => {
    const onSubmit = (data) => {
       console.log(data) // A ENLEVER AVANT FIN PROJET
       axios
-         .post(`http://192.168.1.21:3005/api/v1/mail/`, data)
+         .post(`${process.env.REACT_APP_API_HOST}/api/v1/mail/`, data)
          .then((res) => {
             alert("Message envoyé")
          })

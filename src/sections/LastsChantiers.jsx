@@ -28,9 +28,9 @@ const LastChantiers = () => {
                      <Chantier
                         titre={infoChantier.chantierTitle}
                         contenu={infoChantier.chantierContent}
-                        image={`http://192.168.1.21:3005${infoChantier.chantierImage.substr(
-                           1
-                        )}`}
+                        image={`${
+                           process.env.REACT_APP_API_HOST
+                        }${infoChantier.chantierImage.substr(1)}`}
                      />
                   </div>
                </Carousel.Item>

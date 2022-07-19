@@ -4,7 +4,6 @@ import { library } from "@fortawesome/fontawesome-svg-core"
 import { faPen } from "@fortawesome/free-solid-svg-icons"
 import { faCheck } from "@fortawesome/free-solid-svg-icons"
 import { faUpload } from "@fortawesome/free-solid-svg-icons"
-import photo from "../../assets/images/chantier.jpg"
 import "./Chantiers.scss"
 import { useRef, useState } from "react"
 import Modal from "react-bootstrap/Modal"
@@ -74,7 +73,7 @@ const Chantiers = () => {
 
          axios
             .put(
-               `http://192.168.1.21:3005/api/v1/chantiers/${chantier._id}`,
+               `${process.env.REACT_APP_API_HOST}/api/v1/chantiers/${chantier._id}`,
                data,
                {
                   headers: {
@@ -125,7 +124,7 @@ const Chantiers = () => {
 
          axios
             .put(
-               `http://192.168.1.21:3005/api/v1/chantiers/${chantier._id}`,
+               `${process.env.REACT_APP_API_HOST}/api/v1/chantiers/${chantier._id}`,
                data,
                {
                   headers: {
@@ -177,7 +176,7 @@ const Chantiers = () => {
 
          axios
             .put(
-               `http://192.168.1.21:3005/api/v1/chantiers/${chantier._id}`,
+               `${process.env.REACT_APP_API_HOST}/api/v1/chantiers/${chantier._id}`,
                data,
                {
                   headers: {
@@ -219,11 +218,14 @@ const Chantiers = () => {
       let idChantier = idToDelete
 
       axios
-         .delete(`http://192.168.1.21:3005/api/v1/chantiers/${idChantier}`, {
-            headers: {
-               Authorization: `Bearer ${token}`,
-            },
-         })
+         .delete(
+            `${process.env.REACT_APP_API_HOST}/api/v1/chantiers/${idChantier}`,
+            {
+               headers: {
+                  Authorization: `Bearer ${token}`,
+               },
+            }
+         )
          .then((res) => {
             dispatch(deleteChantiers(idChantier))
             setIdToDelete("")
@@ -272,7 +274,7 @@ const Chantiers = () => {
       // console.log(data)
       axios
          .put(
-            `http://192.168.1.21:3005/api/v1/chantiers/${chantier._id}`,
+            `${process.env.REACT_APP_API_HOST}/api/v1/chantiers/${chantier._id}`,
             data,
             {
                headers: {
@@ -327,7 +329,7 @@ const Chantiers = () => {
       }
 
       axios
-         .post(`http://192.168.1.21:3005/api/v1/chantiers/`, data, {
+         .post(`${process.env.REACT_APP_API_HOST}/api/v1/chantiers/`, data, {
             headers: {
                Authorization: `Bearer ${token}`,
             },
@@ -362,9 +364,9 @@ const Chantiers = () => {
                      <img
                         id={"img" + chantier._id}
                         name={"img" + chantier._id}
-                        src={`http://192.168.1.21:3005${chantier.chantierImage.substr(
-                           1
-                        )}`}
+                        src={`${
+                           process.env.REACT_APP_API_HOST
+                        }${chantier.chantierImage.substr(1)}`}
                         alt="Artisan"
                      />
                      <input

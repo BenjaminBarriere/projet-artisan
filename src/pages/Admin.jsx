@@ -15,7 +15,7 @@ const Admin = () => {
 
    const login = (data) => {
       axios
-         .post(`http://192.168.1.21:3005/api/v1/login/`, data)
+         .post(`${process.env.REACT_APP_API_HOST}/api/v1/login/`, data)
          .then((res) => {
             localStorage.setItem("token", res.data.token)
             setToken(res.data.token)

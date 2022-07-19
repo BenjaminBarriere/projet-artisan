@@ -16,7 +16,10 @@ const Presentation = () => {
          <h2>{tmp_info.presentationTitle}</h2>
 
          <div className="presentation">
-            <img src={`http://192.168.1.21:3005${image}`} alt="Artisan" />
+            <img
+               src={`${process.env.REACT_APP_API_HOST}${image}`}
+               alt="Artisan"
+            />
             <p>{tmp_info.presentationContent}</p>
          </div>
       </div>

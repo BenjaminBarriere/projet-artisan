@@ -13,18 +13,21 @@ import axios from "axios"
 const App = () => {
    const dispatch = useDispatch()
 
-   axios.get(`http://192.168.1.21:3005/api/v1/infos/`).then((res) => {
+   axios.get(`${process.env.REACT_APP_API_HOST}/api/v1/infos/`).then((res) => {
       dispatch(setInfosData(res.data))
    })
 
-   axios.get(`http://192.168.1.21:3005/api/v1/chantiers/`).then((res) => {
-      dispatch(setChantiersData(res.data))
-   })
+   axios
+      .get(`${process.env.REACT_APP_API_HOST}/api/v1/chantiers/`)
+      .then((res) => {
+         dispatch(setChantiersData(res.data))
+      })
 
-   axios.get(`http://192.168.1.21:3005/api/v1/sujets/`).then((res) => {
+   axios.get(`${process.env.REACT_APP_API_HOST}/api/v1/sujets/`).then((res) => {
       dispatch(setSujetsData(res.data))
    })
 
+   console.log(process.env.REACT_APP_API_HOST)
    return (
       <BrowserRouter>
          <Routes>

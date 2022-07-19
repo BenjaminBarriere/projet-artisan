@@ -6,7 +6,6 @@ import axios from "axios"
 import { useDispatch } from "react-redux"
 import { editInfos } from "../../feature/infos.slice"
 import "./Infos.scss"
-import { useState } from "react"
 import Resizer from "react-image-file-resizer"
 const phoneRegExp = /^(?=.*\d)[\d ]+$/
 
@@ -33,8 +32,6 @@ const Infos = () => {
       handleSubmit,
       formState,
       formState: { errors },
-      setValue,
-      watch,
    } = useForm({
       mode: "onTouched",
       resolver: yupResolver(schema),
@@ -73,14 +70,12 @@ const Infos = () => {
       if (data.presentationImage.length !== 0) {
          data.presentationImage = await resizeFile(data.presentationImage[0])
          data.modifImage = true
-         console.log("salut")
       } else {
          data.presentationImage = tmp_info.presentationImage
-         console.log(data.presentationImage)
       }
 
       axios
-         .put(`http://192.168.1.21:3005/api/v1/infos/${id}`, data, {
+         .put(`${process.env.REACT_APP_API_HOST}/api/v1/infos/${id}`, data, {
             headers: {
                Authorization: `Bearer ${token}`,
             },
@@ -142,7 +137,7 @@ const Infos = () => {
             <label className="presImage">
                Image de la présentation:
                <div className="image-pres">
-                  <img src={`http://192.168.1.21:3005${srcImage}`} />
+                  <img src={`${process.env.REACT_APP_API_HOST}${srcImage}`} />
                   <input
                      id="presentationImage"
                      type="file"
