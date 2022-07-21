@@ -86,7 +86,8 @@ const Infos = () => {
 
             dispatch(editInfos([data, id]))
 
-            console.log(res.data.msg)
+            // console.log(res.data.msg)
+            alert("Modification effecuté !")
          })
          .catch((error) => {
             console.log(error.response.data)
